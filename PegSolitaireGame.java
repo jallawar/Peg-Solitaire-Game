@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class PegSolitaireGame 
 {	
 	/**
@@ -91,6 +90,7 @@ public class PegSolitaireGame
 												{'@', '@', '@', '@', '@', '@', '@', '@', '@'},
 												{'#', '#', '#', '@', '@', '@', '#', '#', '#'},
 												{'#', '#', '#', '@', '@', '@', '#', '#', '#'}};
+			return  board;
 		}
 		else if(boardType==2){
 			char[][] board = {{'#','-','@','@','-','#'},
@@ -99,12 +99,14 @@ public class PegSolitaireGame
 												{'@','@','@','@','@','@'},
 												{'-','@','@','@','@','-'},
 												{'#','-','@','@','-','#'}};
+			return board;
 		}
 		else if(boardType==3){
 			char[][] board ={{'#','#','#','-','@','-','#','#','#'},
 											 {'#','#','-','@','@','@','-','#','#'},
 											 {'#','-','@','@','-','@','@','-','#'},
 											 {'-','@','@','@','@','@','@','@','-'}};
+			return board;
 		}
 		else {
 			char[][] board ={{'-','-','-','-','-'},
@@ -112,8 +114,8 @@ public class PegSolitaireGame
 											 {'-','-','@','-','-'},
 											 {'-','-','@','-','-'},
 											 {'-','-','-','-','-'}};
+			return board;
 		}
-		return null;
 	}
 	
 	/**
@@ -210,8 +212,15 @@ public class PegSolitaireGame
 	 */
 	public static int countPegsRemaining(char[][] board)
 	{
-		// TODO: IMPLEMENT THIS METHOD
-		return 0;
+		int count = 0;
+		for(int i=0; i< board.length; i++){
+			for (int j = 0; j<board[0].length; j++){
+				if(board[i][j]=='@'){
+					count++;
+				}
+			}
+		}
+		return count;
 	}
 	
 	/**
