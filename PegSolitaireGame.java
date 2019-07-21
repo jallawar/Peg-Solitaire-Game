@@ -12,12 +12,38 @@ public class PegSolitaireGame
      */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        // TODO: IMPLEMENT THIS METHOD
-        for (int i = 1; i < 5; i++) {
-            char[][] board = createBoard(i);
+
+        System.out.println("WELCOME TO CS300 PEG SOLITAIRE!\n" +
+                "===============================\n");
+
+        System.out.println("Board Style Menu\n" +
+                "  1) Cross\n" +
+                "  2) Circle\n" +
+                "  3) Triangle\n" +
+                "  4) Simple T\n");
+        char [][]board = createBoard(readValidInt(sc, "Choose a board style: ",1, 4));
+        while(true){
             displayBoard(board);
-            System.out.println(countMovesAvailable(board));
+
+            if(countMovesAvailable(board)==0){
+                if(countPegsRemaining(board)==1){
+                    System.out.println("Congrats, you won!");
+                }
+                else {
+                    System.out.println("It looks like there are no more legal moves.  Please try again.");
+                }
+                break;
+            }
+
+            int []array = readValidMove(sc, board);
+            performMove(board, array[1], array[0], array[2]);
+
         }
+
+        System.out.println();
+        System.out.print("==========================================\n" +
+                "THANK YOU FOR PLAYING CS300 PEG SOLITAIRE!");
+
     }
 
     /**
@@ -43,9 +69,11 @@ public class PegSolitaireGame
         int num;
         String input;
         boolean isValid;
+
+        System.out.print(prompt);
+
         while (true){
             isValid = true;
-            System.out.println(prompt);
             input = in.nextLine();
             if("".equals(input)){
                 isValid = false;
@@ -58,9 +86,10 @@ public class PegSolitaireGame
             }
             if (isValid){
                 num = Integer.parseInt(input);
-                if ((num < max) && (num > min))
+                if ((num <= max) && (num >= min))
                     return num;
             }
+            System.out.print("Please enter your choice as an integer between " + min + " and " + max + ": ");
         }
     }
 
@@ -156,6 +185,7 @@ public class PegSolitaireGame
      */
     public static void displayBoard(char[][] board)
     {
+        System.out.println();
         System.out.print("  ");
         for(int c=0; c < board[0].length; c++){
             System.out.print(c+1);
@@ -191,8 +221,37 @@ public class PegSolitaireGame
      */
     public static int[] readValidMove(Scanner in, char[][] board)
     {
-        // TODO: IMPLEMENT THIS METHOD
-        return null;
+        int row, column, direction;
+
+        while(true) {
+            column = readValidInt(in, "Choose the COLUMN of a peg you'd like to move: ", 1, board[0].length);
+            row = readValidInt(in, "Choose the ROW of a peg you'd like to move: ", 1, board.length);
+            direction = readValidInt
+                    (in, "Choose a DIRECTION to move that peg 1) UP, 2) DOWN, 3) LEFT, or 4) RIGHT: ", 1, 4);
+
+            if (isValidMove(board, row, column, direction)) {
+                return new int[]{column, row, direction};
+            }
+
+            System.out.print("Moving a peg from row " + row +" and column " + column +" ");
+
+            if(direction==1){
+                System.out.print("UP");
+            }
+            else if(direction==2){
+                System.out.print("DOWN");
+            }
+            else if(direction==3){
+                System.out.print("LEFT");
+            }
+            else{
+                System.out.print("RIGHT");
+            }
+
+            System.out.println(" is not currently a legal move.");
+            System.out.println();
+        }
+
     }
 
     /**
@@ -274,7 +333,6 @@ public class PegSolitaireGame
      */
     public static char[][] performMove(char[][] board, int row, int column, int direction)
     {
-        // TODO: IMPLEMENT THIS METHOD
         if(isValidMove(board, row, column, direction)) {
 
             board[row - 1][column - 1] = '-';
