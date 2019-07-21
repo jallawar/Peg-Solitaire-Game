@@ -40,7 +40,6 @@ public class PegSolitaireGame
      */
     public static int readValidInt(Scanner in, String prompt, int min, int max)
     {
-        // TODO: IMPLEMENT THIS METHOD
         int num;
         String input;
         boolean isValid;
@@ -157,7 +156,6 @@ public class PegSolitaireGame
      */
     public static void displayBoard(char[][] board)
     {
-        // TODO: IMPLEMENT THIS METHOD
         System.out.print("  ");
         for(int c=0; c < board[0].length; c++){
             System.out.print(c+1);
