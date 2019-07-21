@@ -12,11 +12,16 @@ public class PegSolitaireGame
      */
     public static void main(String[] args)
     {
+        Scanner sc = new Scanner(System.in);
         // TODO: IMPLEMENT THIS METHOD
-        for(int i = 1; i < 5; i++){
-            char [][]board = createBoard(i);
+        char [][]board = createBoard(4);
+        int a,b,c;
+        while(true){
             displayBoard(board);
-            System.out.println();
+            a = sc.nextInt();
+            b = sc.nextInt();
+            c = sc.nextInt();
+            System.out.println(isValidMove(board, a, b, c));
         }
     }
 
@@ -217,8 +222,42 @@ public class PegSolitaireGame
      */
     public static boolean isValidMove(char[][] board, int row, int column, int direction)
     {
-        // TODO: IMPLEMENT THIS METHOD
-        return false;
+        if(board[row-1][column-1]!='@'){
+            return false;
+        }
+        if(direction==1){
+            if(row < 3){
+                return false;
+            }
+            if((board[row-2][column-1]!='@') || (board[row-3][column-1]!='-')){
+                return false;
+            }
+        }
+        else  if(direction==2){
+            if(row > board.length-2){
+                return false;
+            }
+            if((board[row][column-1]!='@') || (board[row+1][column-1]!='-')){
+                return false;
+            }
+        }
+        else  if(direction==3){
+            if(column < 3){
+                return false;
+            }
+            if((board[row-1][column-2]!='@') || (board[row-1][column-3]!='-')){
+                return false;
+            }
+        }
+        else  if(direction==4){
+            if(column > board[0].length-2){
+                return false;
+            }
+            if((board[row-1][column]!='@') || (board[row-1][column+1]!='-')){
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
