@@ -10,18 +10,13 @@ public class PegSolitaireGame
      *
      * @param args - any command line arguments may be ignored by this method.
      */
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         // TODO: IMPLEMENT THIS METHOD
-        char [][]board = createBoard(4);
-        int a,b,c;
-        while(true){
+        for (int i = 1; i < 5; i++) {
+            char[][] board = createBoard(i);
             displayBoard(board);
-            a = sc.nextInt();
-            b = sc.nextInt();
-            c = sc.nextInt();
-            System.out.println(isValidMove(board, a, b, c));
+            System.out.println(countMovesAvailable(board));
         }
     }
 
@@ -313,8 +308,17 @@ public class PegSolitaireGame
      */
     public static int countMovesAvailable(char[][] board)
     {
-        // TODO: IMPLEMENT THIS METHOD
-        return 0;
+        int total = 0;
+        for(int i = 1; i <= board.length; i++){
+            for(int j = 1; j <= board[0].length; j++){
+                for(int k = 1; k < 5; k++){
+                    if(isValidMove(board, i, j, k)){
+                        total++;
+                    }
+                }
+            }
+        }
+        return total;
     }
 
 }
