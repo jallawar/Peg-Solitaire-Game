@@ -217,6 +217,10 @@ public class PegSolitaireGame
      */
     public static boolean isValidMove(char[][] board, int row, int column, int direction)
     {
+        if(row > board.length || column>board[0].length || row<0 || column<0){
+            return false;
+        }
+
         if(board[row-1][column-1]!='@'){
             return false;
         }
@@ -271,6 +275,24 @@ public class PegSolitaireGame
     public static char[][] performMove(char[][] board, int row, int column, int direction)
     {
         // TODO: IMPLEMENT THIS METHOD
+        if(isValidMove(board, row, column, direction)) {
+
+            board[row - 1][column - 1] = '-';
+
+            if (direction == 1) {
+                board[row - 2][column - 1] = '-';
+                board[row - 3][column - 1] = '@';
+            } else if (direction == 2) {
+                board[row][column - 1] = '-';
+                board[row + 1][column - 1] = '@';
+            } else if (direction == 3) {
+                board[row - 1][column - 2] = '-';
+                board[row - 1][column - 3] = '@';
+            } else {
+                board[row - 1][column] = '-';
+                board[row - 1][column + 1] = '@';
+            }
+        }
         return null;
     }
 
