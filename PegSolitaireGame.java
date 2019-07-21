@@ -13,6 +13,11 @@ public class PegSolitaireGame
     public static void main(String[] args)
     {
         // TODO: IMPLEMENT THIS METHOD
+        for(int i = 1; i < 5; i++){
+            char [][]board = createBoard(i);
+            displayBoard(board);
+            System.out.println();
+        }
     }
 
     /**
@@ -153,6 +158,19 @@ public class PegSolitaireGame
     public static void displayBoard(char[][] board)
     {
         // TODO: IMPLEMENT THIS METHOD
+        System.out.print("  ");
+        for(int c=0; c < board[0].length; c++){
+            System.out.print(c+1);
+        }
+        System.out.println();
+
+        for(int r = 0; r < board.length; r++){
+            System.out.print((r+1) + " ");
+            for(int c = 0; c < board[0].length; c++){
+                System.out.print(board[r][c]);
+            }
+            System.out.println();
+        }
     }
 
 
