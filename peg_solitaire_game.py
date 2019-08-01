@@ -104,6 +104,18 @@ def display_board(board):
 	
 	- board: the current state of the board being drawn.
     """
+    print(" ", end=" ")
+
+    for i in range(0, len(board[0])):
+        print(i + 1, end="")
+
+    print()
+
+    for i in range(0, len(board)):
+        print(i+1, end=" ")
+        for char in board[i]:
+            print(char, end="")
+        print()
     pass
 
 
@@ -208,10 +220,10 @@ def main():
 	idea of everything this method is responsible for.
     """
 
-    print(count_pegs_remaining(create_board(1)))
-    print(count_pegs_remaining(create_board(2)))
-    print(count_pegs_remaining(create_board(3)))
-    print(count_pegs_remaining(create_board(4)))
+    display_board(create_board(1))
+    display_board(create_board(2))
+    display_board(create_board(3))
+    display_board(create_board(4))
     pass
 
 
