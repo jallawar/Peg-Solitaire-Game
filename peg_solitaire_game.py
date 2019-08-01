@@ -21,6 +21,7 @@ def is_valid_move(board, row, column, direction):
     """
     pass
 
+
 def perform_move(board, row, column, direction):
     """ applies move to a board 
 	The parameters of this method are the same as those of the isValidMove()
@@ -37,6 +38,7 @@ def perform_move(board, row, column, direction):
     """
     pass
 
+
 def count_pegs_remaining(board):
     """ returns the number of pegs left on a board 
 	This method counts up the number of pegs left within a particular board 
@@ -46,6 +48,7 @@ def count_pegs_remaining(board):
 	- return the number of pegs found in that board.
     """
     pass
+
 
 def count_moves_available(board):
     """ returns the number of possible moves available on a board 
@@ -62,17 +65,18 @@ def count_moves_available(board):
     """
     pass
 
+
 def read_valid_move(board):
     """ reads a single peg jump move in from the user 
-	This method is used to read in and validate each part of a user’s move 
+	This method is used to read in and validate each part of a userâ€™s move 
 	choice: the row and column that they wish to move a peg from, and the 
 	direction that they would like to move/jump that peg in.  When the 
-	player’s row, column, and direction selection does not represent a valid
+	playerâ€™s row, column, and direction selection does not represent a valid
 	move, your program should report that their choice does not constitute a
 	legal move before giving them another chance to enter a different move.  
 	They should be given as many chances as necessary to enter a legal move.
 	The array of three integers that this method returns will contain: the 
-	user’s choice of column as the first integer, their choice of row as the
+	userâ€™s choice of column as the first integer, their choice of row as the
 	second integer, and their choice of direction as the third.
 	
 	- board: the state of the board that moves must be legal on.
@@ -80,6 +84,7 @@ def read_valid_move(board):
 	  a valid move and store in that order with an array.
     """
     pass
+
 
 def display_board(board):
     """ prints out the contents of a board for the player to see 
@@ -94,6 +99,7 @@ def display_board(board):
 	- board: the current state of the board being drawn.
     """
     pass
+
 
 def create_board(board_type):
     """ returns a list of lists initialized according to a specific board type 
@@ -137,13 +143,40 @@ def create_board(board_type):
 	    
 	return the fully initialized two dimensional array.
     """
+    if board_type == 1:
+        return [['#', '#', '#', '@', '@', '@', '#', '#', '#'],
+                ['#', '#', '#', '@', '@', '@', '#', '#', '#'],
+                ['@', '@', '@', '@', '@', '@', '@', '@', '@'],
+                ['@', '@', '@', '@', '-', '@', '@', '@', '@'],
+                ['@', '@', '@', '@', '@', '@', '@', '@', '@'],
+                ['#', '#', '#', '@', '@', '@', '#', '#', '#'],
+                ['#', '#', '#', '@', '@', '@', '#', '#', '#']]
+    elif board_type == 2:
+        return [['#', '-', '@', '@', '#', '-'],
+                ['-', '@', '@', '@', '@', '-'],
+                ['@', '@', '@', '@', '@', '@'],
+                ['@', '@', '@', '@', '@', '@'],
+                ['-', '@', '@', '@', '@', '-'],
+                ['#', '-', '@', '@', '-', '#']]
+    elif board_type == 3:
+        return [['#', '#', '#', '-', '@', '-', '#', '#', '#'],
+                ['#', '#', '-', '@', '@', '@', '-', '#', '#'],
+                ['#', '-', '@', '@', '@', '@', '@', '-', '#'],
+                ['-', '@', '@', '@', '@', '@', '@', '@', '-']]
+    else:
+        return [['-', '-', '-', '-', '-'],
+                ['-', '@', '@', '@', '-'],
+                ['-', '-', '@', '-', '-'],
+                ['-', '-', '@', '-', '-'],
+                ['-', '-', '-', '-', '-']]
     pass
+
 
 def read_valid_int(prompt, min, max):
     """ returns a valid integer from the user 
 	This method is used to read in all inputs from the user.  After printing
-	the specified prompt, it will check whether the user’s input is in fact
-	an integer within the specified range.  If the user’s input does not 
+	the specified prompt, it will check whether the userâ€™s input is in fact
+	an integer within the specified range.  If the userâ€™s input does not 
 	represent an integer or does not fall within the required range, print
 	an error message asking for a value within that range before giving the
 	user another chance to enter valid input.  The user should be given as
@@ -159,6 +192,7 @@ def read_valid_int(prompt, min, max):
     """
     pass
 
+
 def main():
     """ drives the entire game application 
 	This method is responsible for everything from displaying the opening 
@@ -167,4 +201,12 @@ def main():
 	methods called from here.  See the Sample Runs below for a more complete
 	idea of everything this method is responsible for.
     """
+
+    board = create_board(1)
+    print(board)
+    print(type(board[0]))
+    print(type(board[1]))
     pass
+
+
+main()
