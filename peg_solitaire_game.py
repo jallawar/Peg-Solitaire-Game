@@ -47,6 +47,12 @@ def count_pegs_remaining(board):
 	- board: the board that pegs are counted from.
 	- return the number of pegs found in that board.
     """
+    pegs = 0;
+    for row in board:
+        for char in row:
+            if char == '@':
+                pegs = pegs + 1
+    return pegs
     pass
 
 
@@ -202,10 +208,10 @@ def main():
 	idea of everything this method is responsible for.
     """
 
-    board = create_board(1)
-    print(board)
-    print(type(board[0]))
-    print(type(board[1]))
+    print(count_pegs_remaining(create_board(1)))
+    print(count_pegs_remaining(create_board(2)))
+    print(count_pegs_remaining(create_board(3)))
+    print(count_pegs_remaining(create_board(4)))
     pass
 
 
